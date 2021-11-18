@@ -1,6 +1,6 @@
 # Robot Simulator
 # Game
-The robot must not fall off the table during movement. The table is 5x5 grid size. This also includes the initial placement of the robot. Any movement that would result in the robot falling from the table must be prevented. 
+The robot must not fall off the table during movement. This also includes the initial placement of the robot. Any movement that would result in the robot falling from the table must be prevented. The table size is 5x5.
 
 ## Installation
 1. Install globally by running `npm install`
