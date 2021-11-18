@@ -1,5 +1,6 @@
 const logic = require('./logic.js');
 const validator = require('./validator.js');
+const util = require('./utils/utils.js');
 
 /**
  * Controller to execute command (PLACE, MOVE, LEFT, RIGHT, REPORT)
@@ -11,27 +12,24 @@ const validator = require('./validator.js');
 const computeCommand = (command, coordinate = null, bearing = null) => {
   switch (true) {
     case /^PLACE/.test(command): {
-      let splitCommand = command.split(' ')[1].split(',');
-      let newX = splitCommand[0];
-      let newY = splitCommand[1]; 
-      let newBearing = splitCommand[2];
+      let splitCommand = command.split(' ')[1].split(','); //[0,0,NORTH]
+      let newBearing = splitCommand[2]; //NORTH
 
       let isValid = validator.isValidCoordinate(splitCommand) && validator.isValidBearing(newBearing);
 
-      return [parseInt(newX), parseInt(newY), newBearing, isValid];
+      return [splitCommand, isValid];
 
     }
     case command === 'MOVE': {
-      let tempCoordinate = coordinate.slice(0);
+      let tempCoordinate = coordinate;
       let computedCoordinate = logic.getNewCoordinate(tempCoordinate, bearing);
       let isValidCoordinate = validator.isValidCoordinate(computedCoordinate);
       if (isValidCoordinate) {
         coordinate = computedCoordinate;
       }
-      
       break;
     }
-    case command === 'LEFT':
+    case command === 'LEFT': 
       bearing = logic.getNewBearing(bearing, command);
       break;
     case command === 'RIGHT':
@@ -39,8 +37,8 @@ const computeCommand = (command, coordinate = null, bearing = null) => {
       break;
     case command === 'REPORT': {
       let result = coordinate[0] + ',' + coordinate[1] + ',' + bearing;
-      console.log(`\nOutput : ${result}\n`);
-      console.log('You may resume with next command or exit program:\n');
+      util.success(`\nOutput : ${result}\n`);
+      util.info('You may resume with next command or exit program:\n');
     }
   }
 
