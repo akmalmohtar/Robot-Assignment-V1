@@ -6,6 +6,8 @@ The robot must not fall off the table during movement. This also includes the in
 1. Install globally by running `npm install`
 2. Start the game by running `npm start`
 
+## Program sample
+![Robot-sample](https://github.com/akmalmohtar/Robot-Assignment-V1/blob/main/run-sample.PNG)
 
 ## Bonus 
 1. Implemented a way for the robot to handle more than one command issuer.
