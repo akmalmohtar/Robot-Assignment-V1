@@ -1,0 +1,17 @@
+{
+  "name": "astro-robot-sim",
+  "version": "1.0.0",
+  "description": "A NodeJS cli application for robot simulator project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node ./src/index.js",
+    "lint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
+  },
+  "author": "akmal m",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "jest": "^27.3.1"
+  }
+}
